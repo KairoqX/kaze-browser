@@ -1,0 +1,14 @@
+[package]
+name = "kaze-ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+kaze-engine = { path = "../kaze-engine" }
+kaze-tabs = { path = "../kaze-tabs" }
+kaze-settings = { path = "../kaze-settings" }
+kaze-theme = { path = "../kaze-theme" }
+gtk4 = { version = "0.11", features = ["v4_12"] }
+libadwaita = "0.9"
+tracing.workspace = true

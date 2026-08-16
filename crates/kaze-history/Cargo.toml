@@ -1,0 +1,7 @@
+[package]
+name = "kaze-history"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]

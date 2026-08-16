@@ -1,0 +1,9 @@
+[package]
+name = "kaze-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+kaze-tabs = { path = "../kaze-tabs" }
+gtk4 = "0.11"

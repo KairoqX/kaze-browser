@@ -1,0 +1,11 @@
+[package]
+name = "kaze-settings"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+kaze-utils = { path = "../kaze-utils" }
+serde.workspace = true
+toml.workspace = true
+tracing.workspace = true

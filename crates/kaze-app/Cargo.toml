@@ -1,0 +1,21 @@
+[package]
+name = "kaze-app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "kaze"
+path = "src/main.rs"
+
+[dependencies]
+kaze-utils = { path = "../kaze-utils" }
+kaze-settings = { path = "../kaze-settings" }
+kaze-theme = { path = "../kaze-theme" }
+kaze-tabs = { path = "../kaze-tabs" }
+kaze-engine = { path = "../kaze-engine" }
+kaze-engine-webkit = { path = "../kaze-engine-webkit" }
+kaze-ui = { path = "../kaze-ui" }
+gtk4 = { version = "0.11", features = ["v4_12"] }
+libadwaita = "0.9"
+tracing.workspace = true

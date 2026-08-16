@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/kaze-utils",
+    "crates/kaze-settings",
+    "crates/kaze-theme",
+    "crates/kaze-tabs",
+    "crates/kaze-history",
+    "crates/kaze-bookmarks",
+    "crates/kaze-downloads",
+    "crates/kaze-session",
+    "crates/kaze-engine",
+    "crates/kaze-engine-webkit",
+    "crates/kaze-adblock",
+    "crates/kaze-network",
+    "crates/kaze-ui",
+    "crates/kaze-app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["Kaze Contributors"]
+repository = "https://github.com/kaze-browser/kaze"
+
+[workspace.dependencies]
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+directories = "5.0"
+uuid = { version = "1", features = ["v4", "serde"] }

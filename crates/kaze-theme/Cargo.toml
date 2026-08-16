@@ -1,0 +1,11 @@
+[package]
+name = "kaze-theme"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+kaze-settings = { path = "../kaze-settings" }
+tracing.workspace = true
+
+[dev-dependencies]

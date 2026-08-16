@@ -1,0 +1,10 @@
+[package]
+name = "kaze-tabs"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+uuid.workspace = true
+serde.workspace = true
+tracing.workspace = true

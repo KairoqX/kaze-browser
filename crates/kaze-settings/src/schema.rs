@@ -155,7 +155,7 @@ impl Default for GeneralSettings {
             // "The URL can't be shown" error page for `about:newtab`).
             // A real new-tab page (with a proper URI scheme, quick
             // links, etc.) is a documented follow-up, not a silent gap.
-            homepage: "data:text/html,<html><head><title>New Tab</title></head><body style='font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:%23888'><h1>Kaze</h1></body></html>".to_string(),
+            homepage: "kaze://newtab".to_string(),
             search_engine: SearchEngine::default(),
             restore_session_on_startup: true,
             default_download_dir: None,

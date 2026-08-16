@@ -160,6 +160,7 @@ impl BrowserWindow {
         let b = browser.clone();
         browser.toolbar.on_navigate(move |input| {
             let url = normalize_input_to_url(&input);
+            let url = crate::newtab::resolve(&url); 
             // Read active_id as its own statement so the `Ref` from
             // `borrow()` is dropped immediately — NOT held across the
             // `view.load_url()` call below. WebKit fires `notify::uri`
@@ -212,10 +213,10 @@ impl BrowserWindow {
     /// architecture doc §7), and activates it.
     pub fn open_tab(self: &Rc<Self>, url: String, profile: ProfileId, next_to_active: bool) -> TabId {
         let id = self.tabs.borrow_mut().open(url.clone(), profile, next_to_active);
-
+        let resolved_url = crate::newtab::resolve(&url);
         let view = self.engine.create_view(ViewConfig {
             profile,
-            initial_url: url,
+            initial_url: resolved_url,
             enable_javascript: true,
             user_agent: None,
         });

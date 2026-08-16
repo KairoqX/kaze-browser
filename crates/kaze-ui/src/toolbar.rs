@@ -109,7 +109,11 @@ impl Toolbar {
         if self.address_entry.has_focus() {
             return;
         }
-        self.address_entry.set_text(url);
+        if crate::newtab::is_internal_page(url) {
+            self.address_entry.set_text("");
+        } else {
+            self.address_entry.set_text(url);
+        }
     }
     pub fn set_nav_state(&self, can_back: bool, can_forward: bool) {
         self.back_button.set_sensitive(can_back);

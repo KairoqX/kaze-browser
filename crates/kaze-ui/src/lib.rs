@@ -7,6 +7,7 @@ pub mod sidebar;
 pub mod theme_apply;
 pub mod toolbar;
 pub mod window;
+pub mod newtab;
 
 pub use theme_apply::{install_live_theme, ThemeApplier};
 pub use window::BrowserWindow;

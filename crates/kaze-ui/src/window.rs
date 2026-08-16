@@ -160,7 +160,15 @@ impl BrowserWindow {
         let b = browser.clone();
         browser.toolbar.on_navigate(move |input| {
             let url = normalize_input_to_url(&input);
-            if let Some(active) = b.tabs.borrow().active_id() {
+            // Read active_id as its own statement so the `Ref` from
+            // `borrow()` is dropped immediately — NOT held across the
+            // `view.load_url()` call below. WebKit fires `notify::uri`
+            // synchronously from inside `load_uri()`, which re-enters this
+            // same `tabs` RefCell via `borrow_mut()`. Holding the borrow
+            // across the call caused a real "RefCell already borrowed"
+            // panic on Enter in the address bar.
+            let active = b.tabs.borrow().active_id();
+            if let Some(active) = active {
                 if let Some(view) = b.views.borrow().get(&active) {
                     view.load_url(&url);
                 }
@@ -169,7 +177,8 @@ impl BrowserWindow {
 
         let b = browser.clone();
         browser.toolbar.on_back(move || {
-            if let Some(active) = b.tabs.borrow().active_id() {
+            let active = b.tabs.borrow().active_id();
+            if let Some(active) = active {
                 if let Some(view) = b.views.borrow().get(&active) {
                     view.go_back();
                 }
@@ -178,7 +187,8 @@ impl BrowserWindow {
 
         let b = browser.clone();
         browser.toolbar.on_forward(move || {
-            if let Some(active) = b.tabs.borrow().active_id() {
+            let active = b.tabs.borrow().active_id();
+            if let Some(active) = active {
                 if let Some(view) = b.views.borrow().get(&active) {
                     view.go_forward();
                 }
@@ -187,7 +197,8 @@ impl BrowserWindow {
 
         let b = browser.clone();
         browser.toolbar.on_reload(move || {
-            if let Some(active) = b.tabs.borrow().active_id() {
+            let active = b.tabs.borrow().active_id();
+            if let Some(active) = active {
                 if let Some(view) = b.views.borrow().get(&active) {
                     view.reload();
                 }
